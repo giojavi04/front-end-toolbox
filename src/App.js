@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import { useState } from 'react'
+import Layout from './components/Layout';
+import Navbar from './components/Navbar';
+import Content from './components/Content';
+
 import './App.css';
 
 function App() {
+  const [word, setWord] = useState('')
+  const [data, setData] = useState(null)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout className="App">
+      <Navbar word={word} changeWord={setWord} setData={setData} />
+      {
+        data && (
+          <Content word={word} data={data} />
+        )
+      }
+    </Layout>
   );
 }
 
